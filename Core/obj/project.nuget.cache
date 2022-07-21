@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "BS34oYAeEezG/61ys5ZJPuZ4fzofuVmXXga6FiIOAZn0fsLr5udsI6yTK+uk9ZMkkFdCZ+Ni1V94NXG10m7roA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Edu\\Practicas\\EFWebApiTest\\Core\\Core.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Edu\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\Edu\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
