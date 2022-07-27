@@ -8,6 +8,9 @@ services:
       - SA_PASSWORD=Testing1
     volumes:
       - database:/var/opt/mssql
+    build:
+      context: .
+      dockerfile: Dockerfile
   webapitest:
     image: ${DOCKER_REGISTRY-}webapitest
     build:
