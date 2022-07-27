@@ -1,0 +1,38 @@
+FROM mcr.microsoft.com/mssql/server:2017-latest AS base
+
+# Switch to root user for access to apt-get install
+USER root
+
+
+# Create app directory
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+
+
+
+# Create app directory
+WORKDIR /usr/src/app
+
+# Copy initialization scripts
+COPY BaseDatos.sql /usr/src/app
+COPY entrypoint.sh /usr/src/app
+COPY configure-db.sh /usr/src/app
+
+RUN chmod +x /usr/src/app/entrypoint.sh
+RUN chmod +x /usr/src/app/configure-db.sh
+RUN chmod +x /usr/src/app/BaseDatos.sql
+
+# Set environment variables, not to have to write them with docker run command
+# Note: make sure that your password matches what is in the run-initialization script 
+ENV SA_PASSWORD Testing1
+ENV ACCEPT_EULA Y
+ENV MSSQL_PID Express
+#
+# Expose port 1433 in case accessing from other container
+# Expose port externally from docker-compose.yml
+EXPOSE 1433
+
+# Run Microsoft SQl Server and initialization script (at the same time)
+CMD /bin/sh ./entrypoint.sh
+
+#HEALTHCHECK --interval=15s CMD /opt/mssql-tools/bin/sqlcmd -U sa -P $SA_PASSWORD -Q "select 1" && grep -q "MSSQL CONFIG COMPLETE" ./config.log
